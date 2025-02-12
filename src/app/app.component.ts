@@ -1,16 +1,32 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+// import { HomeComponent } from './home/home.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
-  template: `
-    <h1>Welcome to {{title}}!</h1>
+  imports: [
+    RouterOutlet,
+    // HomeComponent,
+    HeaderComponent,
+  ],
 
-    <router-outlet />
+  template: `
+    <app-header />
+    <main>
+      <!-- <app-home/> -->
+      <router-outlet />
+    </main>
   `,
-  styles: [],
+
+  styles: [
+    `
+      main {
+        padding: 16px;
+      }
+    `,
+  ],
 })
 export class AppComponent {
   title = 'angular-app';
