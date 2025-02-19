@@ -1,9 +1,16 @@
 <h3>Todos list</h3>
+<!-- <p *ngIf="!todoItems().length">Loading...</p> -->
+
+@if(!todoItems().length){
+<p>Loading.....</p>
+}
+
 <ul class="todos">
-  @for (todo of todoItems(); track todo.id) {
-  <li class="todos__items">
-    <input id="todo-[todo.id]" type="checkbox" value="todo.completed" />
-    <label for="todo-[todo.id]">{{ todo.title }}</label>
-  </li>
+  @for (item of todoItems(); track item.id) {
+  <app-todo-item (itemToggoled)="updateTodoItem($event)" [todoItem]="item" />
+  <!-- <li class="todos__items">
+    <input id="todo-{{ item.id }}" type="checkbox" value="item.completed" />
+    <label for="todo-{{ item.id }}">{{ item.title }}</label>
+  </li> -->
   }
 </ul>
